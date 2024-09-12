@@ -1,46 +1,86 @@
 import React from "react";
 import './App.css'
 import './index.css'
+import Background from './bg.png'; 
+import GirlImage from './girl.png'; 
+import Head from './head.png'
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8 w-100">
       <div className="max-w-3xl mx-auto bg-white shadow-md p-6 rounded-lg">
+      <img src={Head} alt="Head"  />
         <header className="text-center mb-8">
-          <h1 className="text-2xl font-bold">Holiday List 2024-25</h1>
-          <p className="text-gray-700">Total Number of Holidays: 21</p>
-          <p className="text-gray-700">Total Number of Effective Holidays: 15</p>
+          <h1 className="text-4xl font-bold">Holiday List</h1>
+          <h1 className="text-2xl font-bold">2024-25</h1>
         </header>
         <main>
           <table className="w-full text-left table-auto">
             <thead>
               <tr>
-                <th className="px-4 py-2">#</th>
-                <th className="px-4 py-2">Month</th>
-                <th className="px-4 py-2">Date</th>
-                <th className="px-4 py-2">Day</th>
-                <th className="px-4 py-2">Occasion</th>
+                <th className="border px-4 py-2">#</th>
+                <th className="border px-4 py-2">Month</th>
+                <th className="border px-4 py-2">Date</th>
+                <th className="border px-4 py-2">Day</th>
+                <th className="border px-4 py-2">Occasion</th>
               </tr>
             </thead>
+            {
             <tbody>
-              {holidays.map((holiday, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2">{index + 1}</td>
-                  <td className="border px-4 py-2">{holiday.month}</td>
-                  <td className="border px-4 py-2">{holiday.date}</td>
-                  <td className="border px-4 py-2">{holiday.day}</td>
-                  <td className="border px-4 py-2">{holiday.occasion}</td>
-                </tr>
-              ))}
-            </tbody>
+         {holidays.map((holiday, index) => (
+       <tr 
+      key={index} 
+      className={`${
+        holiday.day === 'Saturday' || holiday.day === 'Sunday' ? 'text-gray-500' : ''
+      }`}
+    >
+      <td className="border px-4 py-2 text-center">{index + 1}</td>
+      <td className="border px-4 py-2 text-center">{holiday.month}</td>
+      <td className="border px-4 py-2 text-center">{holiday.date}</td>
+      <td className="border px-4 py-2 text-center">{holiday.day}</td>
+      <td className="border px-4 py-2 text-center">{holiday.occasion}</td>
+    </tr>
+  ))}
+</tbody>
+}
+
           </table>
+          <p className="text-black-700 font-bold pl-10">Total Number of Holidays: 21</p>
+          <p className="text-black-700 font-bold pl-10">Total Number of Effective Holidays: 15</p>
+          <br />
+          <br />
         </main>
-        <footer className="text-center mt-8">
-          <p>Koyya Enterprises Private Limited</p>
-          <p>Registered Office: Wework Salarpuria Magnificia, Tin Factory, 78, Old Madras Road, Bangalore - 560016</p>
-          <p>CIN: U62013KA2023PTC179278</p>
-          <p>Email: <a href="mailto:contactus@koyya.in" className="text-blue-600">contactus@koyya.in</a></p>
-          <p>Website: <a href="https://www.koyya.in" className="text-blue-600">www.koyya.in</a></p>
-        </footer>
+      
+    <footer
+      className="relative bg-cover bg-center text-white h-32"
+      
+       style={{ backgroundImage: `url(${Background})` }}
+        
+      
+      >
+      <div className="justify-start absolute inset-0 flex items-end">
+        <div className="w-3/4 bg-opacity-50 p-4 flex items-center ">
+         <img src={GirlImage} alt="Girl" className=" w-6  md:h-10 lg:h-40 md:w-48 lg:w-10" />
+          <div className="text-left mx-4 pt-24 h-45 text-sm">
+            <p className="font-bold text-lg">Koyya Enterprises Private Limited</p>
+            <p>
+              Registered Office: Wework Salarpuria Magnificia, Tin Factory, 78,
+              Old Madras Road, Bangalore - 560016
+            </p>
+            <p>CIN: U62013KA2023PTC179278</p>
+            <p>
+              <a href="mailto:contactus@koyya.in" className="underline">
+                contactus@koyya.in
+              </a>{' '}
+              |{' '}
+              <a href="https://www.koyya.in" className="underline">
+                https://www.koyya.in
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="h-52"></div> 
+    </footer>
       </div>
     </div>
   );
